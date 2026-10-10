@@ -1,0 +1,437 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Dom Ribeiro Barbearia | Praia Grande</title>
+<meta name="description" content="Dom Ribeiro Barbearia, na Guilhermina, em Praia Grande. Corte, barba e um ambiente onde você chega e se sente em casa. Agende online.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;800&display=swap" rel="stylesheet">
+
+
+ <!--
+COMO EDITAR ESTE ARQUIVO
+  ------------------------------------------------------------
+  1) FOTOS: no bloco :root logo abaixo, troque cada --img-* por
+     url('caminho-ou-link-da-foto.jpg'). Enquanto não trocar,
+     aparece um degradê no lugar.
+  2) TEXTOS: edite direto no HTML (procure os comentários --> 
+  
+
+<style>
+:root{
+  /* ---------- FOTOS (troque por url('sua-foto.jpg')) ---------- */
+  --img-hero: linear-gradient(135deg,#3a3a3a 0%,#1c1c1c 60%,#2b2622 100%);
+  --img-corte: linear-gradient(135deg,#4a4540 0%,#25221f 100%);
+  --img-barba: linear-gradient(135deg,#3d3f42 0%,#1e1f21 100%);
+  --img-combo: linear-gradient(135deg,#514a40 0%,#2a2620 100%);
+  --img-ambiente: linear-gradient(135deg,#46423d 0%,#211f1c 100%);
+  --img-destaque: linear-gradient(135deg,#5a5147 0%,#2a2722 100%);
+
+  /* ---------- CORES ---------- */
+  --bg:#f5f5f5;
+  --ink:#1f1f1f;
+  --muted:#6b6b6b;
+  --dark:#262626;
+  --gold:#c9a24a;
+  --radius:28px;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:'Outfit',system-ui,sans-serif;background:var(--bg);color:var(--ink);line-height:1.35;-webkit-font-smoothing:antialiased}
+a{color:inherit;text-decoration:none}
+img{max-width:100%;display:block}
+.wrap{width:min(1000px,calc(100% - 48px));margin-inline:auto}
+
+/* ---------- BOTÕES ---------- */
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;border:0;cursor:pointer;font:500 17px 'Outfit',sans-serif;padding:15px 34px;border-radius:999px;transition:transform .2s,opacity .2s}
+.btn:hover{transform:translateY(-2px);opacity:.92}
+.btn-dark{background:#222;color:#fff}
+.btn-light{background:#fff;color:#222}
+.btn-ghost{background:transparent;color:#fff;border:1px solid rgba(255,255,255,.4)}
+
+/* ---------- HERO ---------- */
+.hero{position:relative;margin:8px;border-radius:36px;overflow:hidden;min-height:675px;color:#fff;background:var(--img-hero) center/cover no-repeat;display:flex;flex-direction:column}
+.hero::before{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(0,0,0,.35) 0%,rgba(0,0,0,.15) 45%,rgba(0,0,0,.45) 100%)}
+.hero > *{position:relative}
+nav{display:flex;justify-content:space-between;align-items:center;padding:70px 92px 0;font-size:15px}
+nav a{opacity:.9}
+nav a:hover{opacity:1}
+nav a.strong{font-weight:600;opacity:1}
+.menu-btn{display:none;background:none;border:0;color:#fff;font-size:26px;cursor:pointer}
+.wordmark{font-weight:800;font-size:clamp(70px,17.5vw,252px);letter-spacing:-.055em;line-height:.9;text-align:center;margin-top:46px;color:#f6f6f6;text-shadow:0 10px 40px rgba(0,0,0,.25);user-select:none}
+.wordmark span{display:inline-block;transform:translateY(.06em)}
+.hero-row{display:flex;justify-content:space-between;align-items:flex-start;gap:40px;padding:0 92px;margin-top:34px}
+.hero-row h1{font-weight:400;font-size:clamp(24px,3vw,32px);line-height:1.08;max-width:430px}
+.hero-row p{font-size:14px;line-height:1.15;max-width:400px;opacity:.95;margin-top:6px}
+
+/* barra de agendamento */
+.book-bar{align-self:center;margin:auto auto 36px;background:#fff;color:#222;border-radius:999px;padding:7px 7px 7px 34px;display:flex;align-items:center;gap:22px;box-shadow:0 12px 40px rgba(0,0,0,.25)}
+.book-bar label{display:flex;align-items:center}
+.book-bar select,.book-bar input{border:0;background:transparent;font:400 17px 'Outfit',sans-serif;color:#222;outline:none;cursor:pointer;padding:8px 0}
+.book-bar .btn{padding:15px 30px}
+
+/* ---------- SOBRE ---------- */
+.about{padding:92px 0 70px}
+.about .wrap{display:grid;grid-template-columns:1fr 1.15fr;gap:60px;align-items:start}
+.about small{font-size:14px;line-height:1.2;max-width:290px;display:block;margin-top:6px}
+.about h2{font-weight:400;font-size:clamp(26px,3.2vw,34px);line-height:1.1}
+
+/* ---------- SERVIÇOS (carrossel) ---------- */
+.spaces{padding-bottom:30px}
+.rail{display:flex;gap:20px;overflow-x:auto;scroll-snap-type:x mandatory;padding-left:max(24px,calc((100vw - 1000px)/2));padding-right:24px;scrollbar-width:none}
+.rail::-webkit-scrollbar{display:none}
+.rail{cursor:grab;overscroll-behavior-x:contain;-webkit-overflow-scrolling:touch}
+.rail.dragging{cursor:grabbing;scroll-snap-type:none;user-select:none}
+.rail.dragging .card{pointer-events:none}
+.rail-nav{width:min(1000px,calc(100% - 48px));margin:18px auto 0;display:flex;justify-content:flex-end;gap:10px}
+.rail-nav button{width:50px;height:50px;border-radius:50%;border:1px solid #222;background:transparent;color:#222;font-size:22px;cursor:pointer;display:grid;place-items:center;transition:background .2s,color .2s,opacity .2s}
+.rail-nav button:hover:not(:disabled){background:#222;color:#fff}
+.rail-nav button:disabled{opacity:.25;cursor:default}
+.card{flex:0 0 min(425px,80vw);scroll-snap-align:start}
+.card .pic{aspect-ratio:405/259;border-radius:22px;background-size:cover;background-position:center;position:relative;overflow:hidden}
+.card .pic::after{content:"";position:absolute;inset:0;background:radial-gradient(circle at 70% 20%,rgba(255,255,255,.1),transparent 55%)}
+.card h3{font-weight:400;font-size:28px;margin-top:20px}
+.card p{font-size:14px;margin-top:6px}
+.card .price{font-size:13px;color:var(--muted);margin-top:2px}
+.progress{height:2px;background:#bdbdbd;margin:22px auto 0;width:min(1000px,calc(100% - 48px));position:relative}
+.progress i{position:absolute;left:0;top:-1px;height:4px;background:#222;width:33%;transition:left .15s}
+.center{text-align:center;margin-top:40px}
+
+/* ---------- NÚMEROS ---------- */
+.stats{padding:90px 0 100px}
+.stats .wrap{display:grid;grid-template-columns:repeat(3,1fr);gap:30px}
+.stats b{display:block;font-weight:400;font-size:clamp(38px,5vw,48px);letter-spacing:-.01em}
+.stats p{font-size:14px;line-height:1.15;max-width:290px;margin-top:6px}
+
+/* ---------- DESTAQUE ESCURO ---------- */
+.feature{background:var(--dark);color:#fff;padding:74px 0 90px}
+.feature .wrap{display:grid;grid-template-columns:1fr 1.25fr;gap:40px;align-items:center}
+.feature .left small{font-size:14px;opacity:.9;display:block;margin-bottom:84px}
+.feature h2{font-weight:400;font-size:clamp(26px,3.2vw,32px);line-height:1.08}
+.feature .left p{font-size:14px;line-height:1.3;max-width:240px;margin:54px 0 38px;opacity:.92}
+.feature .right{position:relative;aspect-ratio:490/430;border-radius:26px;background:var(--img-destaque) center/cover no-repeat}
+.chips{position:absolute;left:-170px;bottom:-14px;display:flex;flex-direction:column;gap:14px;width:320px}
+.chip{background:#f4f4f4;color:#222;border-radius:14px;padding:14px 18px 14px 14px;display:flex;gap:14px;align-items:center;box-shadow:0 8px 24px rgba(0,0,0,.25)}
+.chip .ic{flex:0 0 48px;height:48px;border-radius:50%;background:#fff;display:grid;place-items:center;font-size:20px}
+.chip h4{font-weight:500;font-size:17px}
+.chip p{font-size:12px;line-height:1.15;margin-top:3px;color:#444}
+
+/* ---------- AVALIAÇÕES ---------- */
+.reviews{padding:100px 0 40px}
+.reviews-head{display:flex;justify-content:space-between;align-items:flex-end;gap:30px;flex-wrap:wrap;margin-bottom:40px}
+.reviews-head h2{font-weight:400;font-size:clamp(28px,3.4vw,36px);line-height:1.08;max-width:420px}
+.score{display:flex;align-items:center;gap:14px}
+.score b{font-size:56px;font-weight:400;line-height:1}
+.stars{color:var(--gold);letter-spacing:3px;font-size:18px}
+.score small{display:block;font-size:13px;color:var(--muted);margin-top:2px}
+.review-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+.review{background:#fff;border-radius:22px;padding:28px 26px 26px;display:flex;flex-direction:column;gap:18px;justify-content:space-between}
+.review q{font-size:18px;line-height:1.3;quotes:none}
+.review span{font-size:13px;color:var(--muted)}
+
+/* ---------- LOCALIZAÇÃO ---------- */
+.location{padding:70px 0 40px}
+.loc-box{display:grid;grid-template-columns:1fr 1.4fr;gap:20px}
+.loc-info{background:var(--dark);color:#fff;border-radius:var(--radius);padding:38px 34px;display:flex;flex-direction:column;justify-content:space-between;gap:32px}
+.loc-info h2{font-weight:400;font-size:32px;line-height:1.05}
+.loc-info address{font-style:normal;font-size:17px;line-height:1.35;margin-top:18px;opacity:.95}
+.loc-info .actions{display:flex;flex-direction:column;gap:12px}
+.map{border-radius:var(--radius);overflow:hidden;min-height:380px;background:#ddd}
+.map iframe{width:100%;height:100%;border:0;min-height:380px;filter:grayscale(.25)}
+
+/* ---------- RODAPÉ / CTA FINAL ---------- */
+.final{padding:80px 0 30px;text-align:center}
+.final h2{font-weight:800;font-size:clamp(44px,10vw,130px);letter-spacing:-.05em;line-height:.95}
+.final p{font-size:17px;color:var(--muted);margin:18px auto 30px;max-width:420px}
+.final .row{display:flex;gap:12px;justify-content:center;flex-wrap:wrap}
+.socials{display:flex;gap:26px;justify-content:center;margin-top:44px;font-size:15px}
+.socials a{border-bottom:1px solid transparent}
+.socials a:hover{border-color:#222}
+footer{padding:26px 24px 40px;text-align:center;font-size:13px;color:var(--muted)}
+
+/* botão flutuante de WhatsApp */
+.wa{position:fixed;right:20px;bottom:20px;z-index:50;background:#25d366;color:#fff;width:58px;height:58px;border-radius:50%;display:grid;place-items:center;font-size:28px;box-shadow:0 8px 24px rgba(0,0,0,.25);transition:transform .2s}
+.wa:hover{transform:scale(1.07)}
+
+/* ---------- RESPONSIVO ---------- */
+@media(max-width:900px){
+  nav{padding:34px 28px 0}
+  .hero-row{padding:0 28px;flex-direction:column;gap:14px}
+  .book-bar{flex-direction:column;border-radius:28px;padding:18px;width:calc(100% - 40px);gap:6px;align-items:stretch}
+  .book-bar label{border-bottom:1px solid #eee;padding:4px 6px}
+  .book-bar select,.book-bar input{width:100%}
+  .about .wrap,.feature .wrap,.loc-box{grid-template-columns:1fr}
+  .about{padding-top:60px}
+  .stats .wrap{grid-template-columns:1fr}
+  .feature .left small{margin-bottom:30px}
+  .feature .left p{margin:24px 0 28px;max-width:none}
+  .chips{position:relative;left:0;bottom:0;width:100%;margin-top:-60px;padding:0 14px}
+  .review-grid{grid-template-columns:1fr}
+}
+@media(max-width:620px){
+  .menu-btn{display:block}
+  nav .links{display:none;position:absolute;top:70px;left:20px;right:20px;background:rgba(20,20,20,.92);border-radius:20px;padding:20px;flex-direction:column;gap:16px}
+  nav .links.open{display:flex}
+  nav{justify-content:flex-end}
+  .hero{min-height:760px}
+}
+@media(min-width:621px){ nav .links{display:flex;justify-content:space-between;width:100%} }
+</style>
+</head>
+<body>
+
+<!-- ===================== 1. HERO ===================== -->
+<header class="hero" id="inicio">
+  <nav>
+    <button class="menu-btn" aria-label="Abrir menu" onclick="document.querySelector('nav .links').classList.toggle('open')">☰</button>
+    <div class="links">
+      <a href="#servicos">Serviços</a>
+      <a href="#sobre">Sobre nós</a>
+      <a href="#avaliacoes">Avaliações</a>
+      <a href="#localizacao">Localização</a>
+      <a href="#agendar" class="strong">Agendar</a>
+    </div>
+  </nav>
+
+  <!-- EDITAR: nome da barbearia -->
+  <div class="wordmark" aria-label="Dom Ribeiro Barbearia">dom<span>ribeiro</span></div>
+
+  <div class="hero-row">
+    <!-- EDITAR: chamada principal -->
+    <h1>Corte, barba e um ambiente pra chegar e ficar à vontade</h1>
+    <p>Barbearia na Guilhermina, em Praia Grande. Profissionais atenciosos, papo bom e agendamento online em poucos cliques.</p>
+  </div>
+
+  <!-- Barra de agendamento: monta uma mensagem pronta no WhatsApp -->
+  <form class="book-bar" id="agendar" onsubmit="return enviarAgendamento(event)">
+    <label><select id="f-servico" aria-label="Serviço">
+      <option>Corte</option><option>Barba</option><option>Corte + Barba</option><option>Outro serviço</option>
+    </select></label>
+    <label><input type="date" id="f-data" aria-label="Data"></label>
+    <label><select id="f-periodo" aria-label="Período">
+      <option>Manhã</option><option>Tarde</option><option>Noite</option>
+    </select></label>
+    <button class="btn btn-dark" type="submit">Agendar agora</button>
+  </form>
+</header>
+
+<!-- ===================== 2. SOBRE NÓS ===================== -->
+<section class="about" id="sobre">
+  <div class="wrap">
+    <small>Tudo que você precisa pra sair daqui no estilo, sem pressa e sem enrolação</small>
+    <!-- EDITAR: texto sobre a barbearia -->
+    <h2>Na Dom Ribeiro o corte é só parte da experiência. Tem um espaço bom de ficar, um time que conversa de igual pra igual e um resultado que você nota no espelho.</h2>
+  </div>
+</section>
+
+<!-- ===================== 3. SERVIÇOS ===================== -->
+<section class="spaces" id="servicos">
+  <div class="rail" id="rail">
+    <!-- EDITAR: nome, descrição e valor de cada serviço. Duplique um bloco .card pra adicionar outro -->
+    <article class="card">
+      <div class="pic" style="background-image:var(--img-corte)"></div>
+      <h3>Corte</h3>
+      <p>Degradê, social, tesoura ou máquina</p>
+      <div class="price">A partir de R$ 00</div>
+    </article>
+    <article class="card">
+      <div class="pic" style="background-image:var(--img-barba)"></div>
+      <h3>Barba</h3>
+      <p>Toalha quente, navalha e acabamento</p>
+      <div class="price">A partir de R$ 00</div>
+    </article>
+    <article class="card">
+      <div class="pic" style="background-image:var(--img-combo)"></div>
+      <h3>Corte + Barba</h3>
+      <p>O combo completo, no mesmo horário</p>
+      <div class="price">A partir de R$ 00</div>
+    </article>
+    <article class="card">
+      <div class="pic" style="background-image:var(--img-ambiente)"></div>
+      <h3>O ambiente</h3>
+      <p>Espaço pra relaxar enquanto espera</p>
+    </article>
+  </div>
+  <div class="progress"><i id="bar"></i></div>
+  <div class="rail-nav">
+    <button type="button" id="prev" aria-label="Serviço anterior">←</button>
+    <button type="button" id="next" aria-label="Próximo serviço">→</button>
+  </div>
+  <div class="center"><a class="btn btn-dark" href="https://www.trinks.com/barbearia-dom-ribeiro" target="_blank" rel="noopener">Ver todos os serviços e valores</a></div>
+</section>
+
+<!-- ===================== 4. NÚMEROS ===================== -->
+<section class="stats">
+  <div class="wrap">
+    <div><b>4,8 ★</b><p>Nota média no Google, a partir de quem já passou pela cadeira.</p></div>
+    <div><b>165</b><p>Avaliações de clientes reais no Google.</p></div>
+    <div><b>Av. Guilhermina</b><p>Número 854, fácil de chegar na Guilhermina, em Praia Grande.</p></div>
+  </div>
+</section>
+
+<!-- ===================== 5. DESTAQUE ESCURO ===================== -->
+<section class="feature">
+  <div class="wrap">
+    <div class="left">
+      <small>Praticidade do começo ao fim</small>
+      <h2>Do agendamento à cadeira, tudo mais simples</h2>
+      <p>Marque o horário pelo celular, chegue na hora e aproveite um atendimento sem correria.</p>
+      <a class="btn btn-light" href="https://www.trinks.com/barbearia-dom-ribeiro" target="_blank" rel="noopener">Agendar horário</a>
+    </div>
+    <div class="right">
+      <div class="chips">
+        <div class="chip"><div class="ic">📅</div><div><h4>Agendamento online</h4><p>Escolha serviço, dia e horário direto pelo Trinks.</p></div></div>
+        <div class="chip"><div class="ic">💈</div><div><h4>Profissionais de confiança</h4><p>Gente que escuta o que você quer e entrega.</p></div></div>
+        <div class="chip"><div class="ic">🛋️</div><div><h4>Ambiente à vontade</h4><p>Espaço agradável pra relaxar e trocar uma ideia.</p></div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== 6. AVALIAÇÕES ===================== -->
+<section class="reviews" id="avaliacoes">
+  <div class="wrap">
+    <div class="reviews-head">
+      <h2>Quem já passou por aqui conta como foi</h2>
+      <div class="score">
+        <b>4,8</b>
+        <div><div class="stars">★★★★★</div><small>165 avaliações no Google</small></div>
+      </div>
+    </div>
+    <!-- EDITAR: depoimentos -->
+    <div class="review-grid">
+      <div class="review"><q>Experiência única, salão de ótimos profissionais e ótimo atendimento 👏👏👏</q><span>Cliente · Google</span></div>
+      <div class="review"><q>O ambiente é nota 1000 e a galera é gente finíssima.</q><span>Cliente · Google</span></div>
+      <div class="review"><q>Pessoal te deixa bem à vontade, troca uma ideia legal e o espaço é bem legal.</q><span>Cliente · Google</span></div>
+    </div>
+    <div class="center">
+      <a class="btn btn-dark" href="https://www.google.com/maps/search/?api=1&query=Dom+Ribeiro+Barbearia+Av.+Guilhermina+854+Praia+Grande" target="_blank" rel="noopener">Ver todas as avaliações</a>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== 7. LOCALIZAÇÃO ===================== -->
+<section class="location" id="localizacao">
+  <div class="wrap">
+    <div class="loc-box">
+      <div class="loc-info">
+        <div>
+          <h2>Onde a gente está</h2>
+          <address>Av. Guilhermina, 854<br>Guilhermina, Praia Grande – SP<br>CEP 11701-500</address>
+        </div>
+        <div class="actions">
+          <a class="btn btn-light" href="https://maps.google.com/maps?q=Av.+Guilhermina,+854,+Praia+Grande+-+SP,+11701-500" target="_blank" rel="noopener">Como chegar</a>
+          <a class="btn btn-ghost" href="tel:+5513991960404">(13) 99196-0404</a>
+        </div>
+      </div>
+      <div class="map">
+        <iframe title="Mapa da Dom Ribeiro Barbearia" loading="lazy" referrerpolicy="no-referrer-when-downgrade"
+          src="https://maps.google.com/maps?q=Av.+Guilhermina,+854,+Praia+Grande+-+SP&output=embed"></iframe>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== 8. CTA FINAL + REDES ===================== -->
+<section class="final">
+  <div class="wrap">
+    <h2>bora cortar?</h2>
+    <p>Garanta seu horário agora e chega só pra sentar na cadeira.</p>
+    <div class="row">
+      <a class="btn btn-dark" href="https://www.trinks.com/barbearia-dom-ribeiro" target="_blank" rel="noopener">Agendar no Trinks</a>
+      <a class="btn btn-light" id="wa-final" href="#" target="_blank" rel="noopener">Chamar no WhatsApp</a>
+      <a class="btn btn-light" href="https://www.instagram.com/domribeirosalon/" target="_blank" rel="noopener">Instagram</a>
+    </div>
+    <div class="socials">
+      <a href="https://www.instagram.com/domribeirosalon/" target="_blank" rel="noopener">Instagram</a>
+      <a id="wa-social" href="#" target="_blank" rel="noopener">WhatsApp</a>
+      <a href="https://www.trinks.com/barbearia-dom-ribeiro" target="_blank" rel="noopener">Trinks</a>
+    </div>
+  </div>
+</section>
+
+<footer>© <span id="ano"></span> Dom Ribeiro Barbearia · Av. Guilhermina, 854 · Praia Grande, SP</footer>
+
+<a class="wa" id="wa-float" href="#" target="_blank" rel="noopener" aria-label="Chamar no WhatsApp">💬</a>
+
+<script>
+  /* ============ CONFIG: edite aqui ============ */
+  const CONFIG = {
+    whatsapp: "5513991960404",   // DDI + DDD + número, só dígitos
+    mensagemPadrao: "Oi! Vim pelo site da Dom Ribeiro e quero agendar um horário."
+  };
+  /* ============================================ */
+
+  const waBase = "https://wa.me/" + CONFIG.whatsapp + "?text=";
+  ["wa-final","wa-social","wa-float"].forEach(id=>{
+    document.getElementById(id).href = waBase + encodeURIComponent(CONFIG.mensagemPadrao);
+  });
+  document.getElementById("ano").textContent = new Date().getFullYear();
+
+  // evita datas passadas no seletor
+  const dataInput = document.getElementById("f-data");
+  dataInput.min = new Date().toISOString().split("T")[0];
+
+  function enviarAgendamento(e){
+    e.preventDefault();
+    const s = document.getElementById("f-servico").value;
+    const p = document.getElementById("f-periodo").value.toLowerCase();
+    let d = dataInput.value;
+    let quando = "";
+    if(d){ const [a,m,di] = d.split("-"); quando = " para o dia " + di + "/" + m + "/" + a; }
+    const msg = "Oi! Quero agendar: " + s + quando + ", no período da " + p + ". Tem horário?";
+    window.open(waBase + encodeURIComponent(msg), "_blank");
+    return false;
+  }
+
+  // barra de progresso do carrossel
+  const rail = document.getElementById("rail"), bar = document.getElementById("bar");
+  function atualizaBarra(){
+    const max = rail.scrollWidth - rail.clientWidth;
+    const pct = max > 0 ? rail.scrollLeft / max : 0;
+    const largura = Math.max(15, (rail.clientWidth / rail.scrollWidth) * 100);
+    bar.style.width = largura + "%";
+    bar.style.left = (pct * (100 - largura)) + "%";
+  }
+  rail.addEventListener("scroll", atualizaBarra);
+  window.addEventListener("resize", atualizaBarra);
+  atualizaBarra();
+
+  // setas do carrossel
+  const prev = document.getElementById("prev"), next = document.getElementById("next");
+  function passo(){ return rail.querySelector(".card").offsetWidth + 20; }
+  function atualizaSetas(){
+    prev.disabled = rail.scrollLeft <= 2;
+    next.disabled = rail.scrollLeft >= rail.scrollWidth - rail.clientWidth - 2;
+  }
+  prev.addEventListener("click", ()=>rail.scrollBy({left:-passo(), behavior:"smooth"}));
+  next.addEventListener("click", ()=>rail.scrollBy({left: passo(), behavior:"smooth"}));
+  rail.addEventListener("scroll", atualizaSetas);
+  window.addEventListener("resize", atualizaSetas);
+  atualizaSetas();
+
+  // arrastar com o mouse (no celular o deslize já é nativo)
+  let segurando = false, inicioX = 0, inicioScroll = 0;
+  rail.addEventListener("pointerdown", e=>{
+    if(e.pointerType !== "mouse") return;
+    segurando = true; inicioX = e.clientX; inicioScroll = rail.scrollLeft;
+  });
+  window.addEventListener("pointermove", e=>{
+    if(!segurando) return;
+    const dx = e.clientX - inicioX;
+    if(Math.abs(dx) > 4) rail.classList.add("dragging");
+    rail.scrollLeft = inicioScroll - dx;
+  });
+  window.addEventListener("pointerup", ()=>{
+    if(!segurando) return;
+    segurando = false;
+    rail.classList.remove("dragging");
+  });
+
+  // fecha o menu mobile ao clicar num link
+  document.querySelectorAll("nav .links a").forEach(a=>a.addEventListener("click",()=>document.querySelector("nav .links").classList.remove("open")));
+</script>
+</body>
+</html>
